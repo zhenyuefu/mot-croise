@@ -85,10 +85,10 @@ public class GrillePlaces {
 	}
 	
 	/**
-	 * 
-	 * @param m
-	 * @param soluce
-	 * @return
+	 * fixer la valeur de certains mots à un candidat donné
+	 * @param m indice
+	 * @param soluce 
+	 * @return une nouvelle grille où les cases constituant l’emplacement de mot d’indice m
 	 */
 	public GrillePlaces fixer(int m, String soluce) {
 		Grille g = gr.copy();
