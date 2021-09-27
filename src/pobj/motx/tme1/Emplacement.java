@@ -44,9 +44,6 @@ public class Emplacement {
 		return i<cases.size() ? cases.get(i) : null;
 	}
 
-	/**
-	 * Transformer le contenu d'instance dans une chaine de caracteres
-	 */
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();

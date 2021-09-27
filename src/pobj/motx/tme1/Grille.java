@@ -35,10 +35,7 @@ public class Grille {
 		return null;
 	}
 
-	/**
-	 * Afficher la grille
-	 * @return le contenu de la grille
-	 */
+
 	@Override
 	public String toString() {
 		return GrilleLoader.serialize(this, false);

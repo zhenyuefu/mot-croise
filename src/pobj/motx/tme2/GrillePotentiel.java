@@ -3,14 +3,27 @@ package pobj.motx.tme2;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe pour correspondre les mots existes avec le dictionnaire
+ * @author Zhenyue FU, Zhe WANG
+ *
+ */
 public class GrillePotentiel {
 
+	/** la grille avec laquelle on a trouve les emplacements possibles */
 	private GrillePlaces grille;
+	/** le dictionnaire avec lequel on va rechercher */
 	private Dictionnaire dic;
+	/** les resultats apres rechercher tous les emplacements dans le dictionnaire */
 	private List<Dictionnaire> motsPot;
+	/** si il existe des emplacements ayant un domaine potentiel vide  */
 	private boolean dead = false;
-	int i=0;
 	
+	/**
+	 * Constuit la grille potentiele avec la grille, le resultat dans le dictionnaire
+	 * @param grille la grille avec laquelle on a trouve les emplacements possibles
+	 * @param dicoComplet le dictionnaire avec lequel on va rechercher
+	 */
 	public GrillePotentiel(GrillePlaces grille, Dictionnaire dicoComplet) {
 		this.grille = grille;
 		this.dic = dicoComplet;
@@ -29,11 +42,19 @@ public class GrillePotentiel {
 		}
 	}
 
+	/**
+	 * verifier s'il n'y a aucun possible
+	 * @return vrai si et seulement si au moins un emplacement a un domaine potentiel vide.
+	 */
 	public boolean isDead() {
 		return dead;
 
 	}
 
+	/**
+	 * obtenir le resultat qu'on a trouve
+	 * @return le resultat
+	 */
 	public List<Dictionnaire> getMotsPot() {
 		return motsPot;
 	}

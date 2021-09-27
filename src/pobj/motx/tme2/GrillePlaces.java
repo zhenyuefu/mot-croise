@@ -5,12 +5,24 @@ import java.util.List;
 
 import pobj.motx.tme1.*;
 
+/**
+ * Classe pour obtenir tous les emplacements des mots dans une grille
+ * @author Zhenyue FU, Zhe WANG
+ *
+ */
 public class GrillePlaces {
 
+	/** Tous les emplacements de mots dans la grille */
 	private List<Emplacement> places;
+	/** la grille qu'on va chercher */
 	private Grille gr;
+	/** le nombre d'emplacements horizontaux */
 	private int nbHorizontal;
 
+	/**
+	 * Construit la classe avec la grille donnee
+	 * @param gr la grille qu'on va rechercher des emplacements dessus
+	 */
 	public GrillePlaces(Grille gr) {
 		places = new ArrayList<Emplacement>();
 		this.gr = gr;
@@ -24,6 +36,11 @@ public class GrillePlaces {
 		
 	}
 
+	/**
+	 * obtenir une ligne de case avec un numero indique
+	 * @param lig le numero de ligne
+	 * @return une liste de cases contenant tous les case dans cette ligne
+	 */
 	private List<Case> getLig(int lig) {
 		List<Case> l = new ArrayList<Case>();
 		for (int i = 0; i < gr.nbCol(); i++) {
@@ -32,6 +49,11 @@ public class GrillePlaces {
 		return l;
 	}
 
+	/**
+	 * obtenir une colonne de case avec un numero indique
+	 * @param lig le numero de colonne
+	 * @return une liste de cases contenant tous les case dans cette colonne
+	 */
 	private List<Case> getCol(int col) {
 		List<Case> l = new ArrayList<Case>();
 		for (int i = 0; i < gr.nbLig(); i++) {
@@ -40,6 +62,10 @@ public class GrillePlaces {
 		return l;
 	}
 
+	/**
+	 * Cherche tous les places possibles dans une ligne ou colonne de cases
+	 * @param cases la liste des cases qu'on va faire le recherche
+	 */
 	private void cherchePlaces(List<Case> cases) {
 		Emplacement e = new Emplacement();
 		for (var c : cases) {
@@ -58,6 +84,12 @@ public class GrillePlaces {
 		e = new Emplacement();
 	}
 	
+	/**
+	 * 
+	 * @param m
+	 * @param soluce
+	 * @return
+	 */
 	public GrillePlaces fixer(int m, String soluce) {
 		Grille g = gr.copy();
 		GrillePlaces grille = new GrillePlaces(g);
@@ -66,10 +98,18 @@ public class GrillePlaces {
 		return null;
 	}
 
+	/**
+	 * obtenir le resultat des emplacements qu'on trouve
+	 * @return les emplacements possibles
+	 */
 	public List<Emplacement> getPlaces() {
 		return places;
 	}
 
+	/**
+	 * obtenir le nombre des emplacements horizontaux
+	 * @return le nombre des emplacements horizontaux
+	 */
 	public int getNbHorizontal() {
 		return nbHorizontal;
 	}

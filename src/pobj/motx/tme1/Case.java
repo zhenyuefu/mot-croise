@@ -72,5 +72,6 @@ public class Case {
 	public boolean isPleine() {
 		return (c == '*');
 	}
-
+	
+	
 }
