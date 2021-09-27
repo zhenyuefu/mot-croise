@@ -61,9 +61,11 @@ public class GrillePlaces {
 	public GrillePlaces fixer(int m, String soluce) {
 		Grille g = gr.copy();
 		GrillePlaces grille = new GrillePlaces(g);
+		for (int i = 0; i < grille.getPlaces().get(m).size(); i++) {
+            grille.getPlaces().get(m).getCase(i).setChar(soluce.charAt(i));   
+        }
 		
-		
-		return null;
+		return grille;
 	}
 
 	public List<Emplacement> getPlaces() {

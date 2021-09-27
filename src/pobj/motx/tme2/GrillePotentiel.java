@@ -33,6 +33,13 @@ public class GrillePotentiel {
 		return dead;
 
 	}
+	
+	public GrillePotentiel fixer(int m, String soluce) {
+	    GrillePlaces grille = this.grille.fixer(m, soluce);
+	    GrillePotentiel gp = new GrillePotentiel(grille, dic);
+	    return gp;
+	}
+	
 
 	public List<Dictionnaire> getMotsPot() {
 		return motsPot;
