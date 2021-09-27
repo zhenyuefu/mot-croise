@@ -2,6 +2,7 @@ package pobj.motx.tme1;
 
 /**
  * Classe de grille qui est constitue d'une matrice de cases
+ * @author Zhe WANG
  */
 public class Grille {
 
@@ -10,8 +11,8 @@ public class Grille {
 
 	/**
 	 * Construit une grille avec les tailles donnees
-	 * @param hauteur
-	 * @param largeur
+	 * @param hauteur hauteur de grille
+	 * @param largeur largeur de grille
 	 */
 	public Grille(int hauteur, int largeur) {
 		cases = new Case[hauteur][largeur];
@@ -22,25 +23,47 @@ public class Grille {
 		}
 	}
 
+	/**
+	 * Recherche la case de coordonnees donnees
+	 * @param lig nombre de lignes de la grille
+	 * @param col nombre de colonnes de la grille
+	 * @return case indiquee
+	 */
 	public Case getCase(int lig, int col) {
 		if (lig >= 0 && lig < cases.length && col >= 0 && col < cases[0].length)
 			return cases[lig][col];
 		return null;
 	}
 
+	/**
+	 * Afficher la grille
+	 * @return le contenu de la grille
+	 */
 	@Override
 	public String toString() {
 		return GrilleLoader.serialize(this, false);
 	}
 
+	/**
+	 * obtenir le nombre de lignes
+	 * @return nombre de lignes
+	 */
 	public int nbLig() {
 		return cases.length;
 	}
 
+	/**
+	 * obtenir le nombre de colonnes
+	 * @return nombre de colonnes
+	 */
 	public int nbCol() {
 		return cases[0].length;
 	}
 
+	/**
+	 * Copier coller la grille dans une nouvelle grille
+	 * @return la nouvelle grille
+	 */
 	public Grille copy() {
 		Grille g = new Grille(this.cases.length, this.cases[0].length);
 		for (int i = 0; i < this.cases.length; i++) {

@@ -2,6 +2,7 @@ package pobj.motx.tme1;
 
 /**
  * Classe de case dans une grille
+ * @author Zhe WANG
  */
 public class Case {
 
