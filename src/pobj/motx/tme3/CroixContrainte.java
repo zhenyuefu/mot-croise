@@ -13,42 +13,62 @@ public class CroixContrainte implements IContrainte {
 	}
 
 	public int reduce(GrillePotentiel grille) {
-		
+
 		EnsembleLettre l1 = new EnsembleLettre();
 		Dictionnaire d1 = grille.getMotsPot().get(m1);
 		for (int i = 0; i < d1.size(); i++) {
 			l1.add(d1.get(i).charAt(c1));
 		}
-		
+
 		EnsembleLettre l2 = new EnsembleLettre();
 		Dictionnaire d2 = grille.getMotsPot().get(m2);
 		for (int i = 0; i < d2.size(); i++) {
 			l2.add(d2.get(i).charAt(c2));
 		}
-		
+
 		EnsembleLettre s = EnsembleLettre.intersection(l1, l2);
-		int cpt=0;
-		if(l1.size()>s.size()) {
+		int cpt = 0;
+		if (l1.size() > s.size()) {
 			Dictionnaire res1 = new Dictionnaire();
-			for(var c : s.getListe()) {
+			for (var c : s.getListe()) {
 				Dictionnaire dictmp = d1;
-				cpt+=dictmp.filtreParLettre(c,c1);
-				for(int i=0; i<dictmp.size(); i++) {
+				cpt += dictmp.filtreParLettre(c, c1);
+				for (int i = 0; i < dictmp.size(); i++) {
 					res1.add(dictmp.get(i));
 				}
 			}
 		}
-		if(l2.size()>s.size()) {
+		if (l2.size() > s.size()) {
 			Dictionnaire res2 = new Dictionnaire();
-			for(var c : s.getListe()) {
+			for (var c : s.getListe()) {
 				Dictionnaire dictmp = d2;
-				cpt+=dictmp.filtreParLettre(c,c2);
-				for(int i=0; i<dictmp.size(); i++) {
+				cpt += dictmp.filtreParLettre(c, c2);
+				for (int i = 0; i < dictmp.size(); i++) {
 					res2.add(dictmp.get(i));
 				}
 			}
-		}	
+		}
 		return cpt;
-		
+
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CroixContrainte other = (CroixContrainte) obj;
+		if (c1 != other.c1)
+			return false;
+		if (c2 != other.c2)
+			return false;
+		if (m1 != other.m1)
+			return false;
+		if (m2 != other.m2)
+			return false;
+		return true;
 	}
 }
