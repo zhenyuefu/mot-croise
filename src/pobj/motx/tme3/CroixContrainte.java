@@ -49,5 +49,6 @@ public class CroixContrainte implements IContrainte {
 			}
 		}	
 		return cpt;
+		
 	}
 }
