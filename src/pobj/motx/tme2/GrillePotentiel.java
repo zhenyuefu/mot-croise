@@ -36,7 +36,7 @@ public class GrillePotentiel {
     public GrillePotentiel(GrillePlaces grille, Dictionnaire dicoComplet) {
         this.grille = grille;
         this.dic = dicoComplet;
-        motsPot = new ArrayList<Dictionnaire>();
+        motsPot = new ArrayList<>();
         for (var e : this.grille.getPlaces()) {
             Dictionnaire d = dic.copy();
             if (d.filtreLongueur(e.size()) == 0) {
@@ -63,8 +63,7 @@ public class GrillePotentiel {
 
     public GrillePotentiel fixer(int m, String soluce) {
         GrillePlaces grille = this.grille.fixer(m, soluce);
-        GrillePotentiel gp = new GrillePotentiel(grille, dic);
-        return gp;
+        return new GrillePotentiel(grille, dic);
     }
 
     public GrillePlaces getGrille() {

@@ -100,7 +100,7 @@ public class GrillePlaces {
      * fixer la valeur de certains mots à un candidat donné
      *
      * @param m      indice
-     * @param soluce
+     * @param soluce mot
      * @return une nouvelle grille où les cases constituant l’emplacement de mot d’indice m
      */
     public GrillePlaces fixer(int m, String soluce) {
@@ -134,8 +134,9 @@ public class GrillePlaces {
     @Override public String toString() {
         StringBuilder sb = new StringBuilder();
         for (var c : places) {
-            for (int i = 0; i < c.size(); i++)
+            for (int i = 0; i < c.size(); i++) {
                 sb.append(c.getCase(i));
+            }
             sb.append('\n');
         }
         return sb.toString();

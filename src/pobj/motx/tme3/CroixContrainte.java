@@ -14,8 +14,7 @@ public class CroixContrainte implements IContrainte {
         this.c2 = c2;
     }
 
-    @Override
-    public int reduce(GrillePotentiel grille) {
+    @Override public int reduce(GrillePotentiel grille) {
 
         EnsembleLettre l1 = new EnsembleLettre();
         Dictionnaire d1 = grille.getMotsPot().get(m1);
@@ -42,8 +41,7 @@ public class CroixContrainte implements IContrainte {
 
     }
 
-    @Override
-    public boolean equals(Object obj) {
+    @Override public boolean equals(Object obj) {
         if (this == obj) {
             return true;
         }
@@ -53,7 +51,7 @@ public class CroixContrainte implements IContrainte {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        CroixContrainte other = (CroixContrainte) obj;
+        CroixContrainte other = (CroixContrainte)obj;
         if (c1 != other.c1) {
             return false;
         }

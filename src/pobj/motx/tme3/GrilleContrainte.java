@@ -29,7 +29,7 @@ public class GrilleContrainte extends GrillePotentiel {
                 int col = ca.getCol();
                 if (casesMap.containsKey(Pair.of(lig, col))) {
                     CroixContrainte cc = new CroixContrainte(casesMap.get(Pair.of(lig, col)).getKey(),
-                            casesMap.get(Pair.of(lig, col)).getValue(), i, c);
+                        casesMap.get(Pair.of(lig, col)).getValue(), i, c);
                     contraintes.add(cc);
                     cc.reduce(this);
                     continue;
@@ -44,10 +44,8 @@ public class GrilleContrainte extends GrillePotentiel {
         return contraintes;
     }
 
-    @Override
-    public GrilleContrainte fixer(int m, String soluce) {
+    @Override public GrilleContrainte fixer(int m, String soluce) {
         GrillePlaces grille = this.getGrille().fixer(m, soluce);
-        GrilleContrainte gp = new GrilleContrainte(grille, this.getDic());
-        return gp;
+        return new GrilleContrainte(grille, this.getDic());
     }
 }
