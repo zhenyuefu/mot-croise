@@ -28,9 +28,11 @@ public class GrillePotentiel {
     private boolean dead = false;
 
     /**
-     * Constuit la grille potentiele avec la grille, le resultat dans le dictionnaire
+     * Constuit la grille potentiele avec la grille, le resultat dans le
+     * dictionnaire
      *
-     * @param grille      la grille avec laquelle on a trouve les emplacements possibles
+     * @param grille      la grille avec laquelle on a trouve les emplacements
+     *                    possibles
      * @param dicoComplet le dictionnaire avec lequel on va rechercher
      */
     public GrillePotentiel(GrillePlaces grille, Dictionnaire dicoComplet) {
@@ -54,11 +56,16 @@ public class GrillePotentiel {
     /**
      * verifier s'il n'y a aucun possible
      *
-     * @return vrai si et seulement si au moins un emplacement a un domaine potentiel vide.
+     * @return vrai si et seulement si au moins un emplacement a un domaine
+     * potentiel vide.
      */
     public boolean isDead() {
         return dead;
 
+    }
+
+    public void setDead() {
+        dead = true;
     }
 
     public GrillePotentiel fixer(int m, String soluce) {

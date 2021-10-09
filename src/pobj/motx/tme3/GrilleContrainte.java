@@ -31,12 +31,13 @@ public class GrilleContrainte extends GrillePotentiel {
                     CroixContrainte cc = new CroixContrainte(casesMap.get(Pair.of(lig, col)).getKey(),
                         casesMap.get(Pair.of(lig, col)).getValue(), i, c);
                     contraintes.add(cc);
-                    cc.reduce(this);
+                    // cc.reduce(this);
                     continue;
                 }
                 casesMap.put(Pair.of(lig, col), Pair.of(i, c));
             }
         }
+        propage();
 
     }
 
@@ -44,7 +45,21 @@ public class GrilleContrainte extends GrillePotentiel {
         return contraintes;
     }
 
-    @Override public GrilleContrainte fixer(int m, String soluce) {
+    private boolean propage() {
+        while (!isDead()) {
+            int cpt = 0;
+            for (var c : contraintes) {
+                cpt += c.reduce(this);
+            }
+            if (cpt == 0)
+                return true;
+        }
+        return false;
+    }
+
+    @Override
+
+    public GrilleContrainte fixer(int m, String soluce) {
         GrillePlaces grille = this.getGrille().fixer(m, soluce);
         return new GrilleContrainte(grille, this.getDic());
     }

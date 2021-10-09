@@ -32,9 +32,15 @@ public class CroixContrainte implements IContrainte {
         int cpt = 0;
         if (l1.size() > s.size()) {
             cpt += d1.filtreParLettres(s, c1);
+            if (d1.size() == 0) {
+                grille.setDead();
+            }
         }
         if (l2.size() > s.size()) {
             cpt += d2.filtreParLettres(s, c2);
+            if (d2.size() == 0) {
+                grille.setDead();
+            }
         }
 
         return cpt;
