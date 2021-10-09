@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * Un ensemble de mots.
+ * 
  * @author Zhenyue FU, Zhe WANG
  */
 public class Dictionnaire {
@@ -77,6 +78,7 @@ public class Dictionnaire {
 
 	/**
 	 * Retire les mots qui n'ont pas exactement caractere c a la position d'i
+	 * 
 	 * @param c caractere sur la position i
 	 * @param i le i-eme caractere
 	 * @return le nombre de mots supprimés
@@ -94,8 +96,23 @@ public class Dictionnaire {
 		return cpt;
 	}
 
+	public int filtreParLettres(EnsembleLettre l, int i) {
+		List<String> cible = new ArrayList<>();
+		int cpt = 0;
+		for (String mot : mots) {
+			if (l.contains(mot.charAt(i))) {
+				cible.add(mot);
+			} else
+				cpt++;
+
+		}
+		mots = cible;
+		return cpt;
+	}
+
 	/**
 	 * Charger le dictionnaire a partir du ficier du chemin indique
+	 * 
 	 * @param path chemin de fichier dictionnaire
 	 * @return le dictionnaire
 	 */
