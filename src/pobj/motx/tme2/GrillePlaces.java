@@ -33,7 +33,7 @@ public class GrillePlaces {
      * @param gr la grille qu'on va rechercher des emplacements dessus
      */
     public GrillePlaces(Grille gr) {
-        places = new ArrayList<Emplacement>();
+        places = new ArrayList<>();
         this.gr = gr;
         for (int i = 0; i < gr.nbLig(); i++) {
             cherchePlaces(getLig(i));
@@ -52,7 +52,7 @@ public class GrillePlaces {
      * @return une liste de cases contenant tous les case dans cette ligne
      */
     private List<Case> getLig(int lig) {
-        List<Case> l = new ArrayList<Case>();
+        List<Case> l = new ArrayList<>();
         for (int i = 0; i < gr.nbCol(); i++) {
             l.add(gr.getCase(lig, i));
         }
@@ -66,7 +66,7 @@ public class GrillePlaces {
      * @return une liste de cases contenant tous les case dans cette colonne
      */
     private List<Case> getCol(int col) {
-        List<Case> l = new ArrayList<Case>();
+        List<Case> l = new ArrayList<>();
         for (int i = 0; i < gr.nbLig(); i++) {
             l.add(gr.getCase(i, col));
         }
@@ -93,7 +93,6 @@ public class GrillePlaces {
         if (e.size() >= 2) {
             places.add(e);
         }
-        e = new Emplacement();
     }
 
     /**
@@ -132,14 +131,7 @@ public class GrillePlaces {
     }
 
     @Override public String toString() {
-        StringBuilder sb = new StringBuilder();
-        for (var c : places) {
-            for (int i = 0; i < c.size(); i++) {
-                sb.append(c.getCase(i));
-            }
-            sb.append('\n');
-        }
-        return sb.toString();
+        return gr.toString();
     }
 
 }

@@ -130,6 +130,10 @@ public class Dictionnaire {
         return cpt;
     }
 
+    public List<String> getMots() {
+        return mots;
+    }
+
     @Override public String toString() {
         if (size() == 1) {
             return mots.get(0);

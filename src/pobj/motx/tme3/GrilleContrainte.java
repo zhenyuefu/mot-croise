@@ -31,7 +31,6 @@ public class GrilleContrainte extends GrillePotentiel {
                     CroixContrainte cc = new CroixContrainte(casesMap.get(Pair.of(lig, col)).getKey(),
                         casesMap.get(Pair.of(lig, col)).getValue(), i, c);
                     contraintes.add(cc);
-                    // cc.reduce(this);
                     continue;
                 }
                 casesMap.put(Pair.of(lig, col), Pair.of(i, c));
@@ -51,8 +50,9 @@ public class GrilleContrainte extends GrillePotentiel {
             for (var c : contraintes) {
                 cpt += c.reduce(this);
             }
-            if (cpt == 0)
+            if (cpt == 0) {
                 return true;
+            }
         }
         return false;
     }

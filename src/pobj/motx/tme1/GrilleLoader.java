@@ -13,11 +13,10 @@ public class GrilleLoader {
 	 * la taille de la grille. Les lignes suivantes donnent le contenu de la
 	 * grille, '*' désignant une case pleine, ' ' une case vide, ou une lettre
 	 * 'a-z'.
-	 * 
-	 * @param path
-	 *            chemin d'accès au fichier grl
+	 *
+	 * @param path chemin d'accès au fichier grl
 	 * @return une grille chargée depuis le fichier ou null en cas de problème
-	 *         d'accès au fichier.
+	 * d'accès au fichier.
 	 */
 	public static Grille loadGrille(String path) {
 		// la grille qu'on va construire
@@ -39,8 +38,9 @@ public class GrilleLoader {
 					// elle contient deux entiers : nblig nbcol
 
 					// séparer et parser les entiers
-					String[] digits = line.split("\\s+"); // couper la string
-															// sur les espaces
+					// couper la string
+					String[] digits = line.split("\\s+");
+					// sur les espaces
 					int haut = Integer.parseInt(digits[0]);
 					int larg = Integer.parseInt(digits[1]);
 					System.out.println("Chargement grille " + haut + " lignes x " + larg + " colonnes \n");
@@ -80,7 +80,7 @@ public class GrilleLoader {
 	public static void saveGrille(Grille g, String path) {
 		try {
 			PrintWriter pw = new PrintWriter(path);
-			pw.print(serialize(g,true));
+			pw.print(serialize(g, true));
 			pw.close();
 		} catch (IOException e) {
 			System.err.println("Save Grille raised an IOException :" + e);
@@ -91,26 +91,29 @@ public class GrilleLoader {
 	/**
 	 * Fournit une représentation de la grille comme une String. L'affichage est
 	 * contrôlé par le style, cf. méthode setStyle().
-	 * 
-	 * @param g
-	 *            une grille
+	 *
+	 * @param g une grille
 	 * @return une String représentant g.
 	 */
 	public static String serialize(Grille g, boolean isGrlFormat) {
 		StringBuilder sb = new StringBuilder();
 
 		String espace;
-		if (! isGrlFormat)
-			espace = " "; // version aérée
-		else
-			espace = ""; // version grl
+		if (!isGrlFormat) {
+			// version aérée
+			espace = " ";
+		} else {
+			// version grl
+			espace = "";
+		}
 
 		// Préface
 		if (isGrlFormat) {
 			sb.append(g.nbLig() + " " + g.nbCol() + "\n");
 		} else {
-			for (int i = 0; i < g.nbCol(); i++)
+			for (int i = 0; i < g.nbCol(); i++) {
 				sb.append("===");
+			}
 			sb.append("\n");
 		}
 
@@ -123,9 +126,10 @@ public class GrilleLoader {
 		}
 
 		// post face
-		if (! isGrlFormat) {
-			for (int i = 0; i < g.nbCol(); i++)
+		if (!isGrlFormat) {
+			for (int i = 0; i < g.nbCol(); i++) {
 				sb.append("===");
+			}
 			sb.append("\n");
 		}
 
