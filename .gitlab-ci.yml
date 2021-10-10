@@ -28,7 +28,7 @@ TME-2:
 
 TME-3:
   script: >
-    /home/pobj/run.sh -cp /home/pobj/pobj-ci.jar:/usr/share/java/junit4.jar:/usr/share/java/hamcrest-core-1.3.jar:/usr/share/java/javafx-base.jar:/usr/share/java/javafx-controls.jar:/usr/share/java/javafx-graphics.jar:/builds/21116827/motcroise/lib/commons-lang3-3.12.0.jar: -id TME-3 -name TME-3
+    /home/pobj/run.sh -Djava.ext.dirs=./lib -id TME-3 -name TME-3
     pobj.motx.tme3.test.CroixContrainteTest
     pobj.motx.tme3.test.GrilleContrainteTest1
     pobj.motx.tme3.test.GrilleContrainteTest2
