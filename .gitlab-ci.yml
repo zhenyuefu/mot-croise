@@ -28,7 +28,7 @@ TME-2:
 
 TME-3:
   script: >
-    /home/pobj/run.sh -id TME-3 -name TME-3
+    /home/pobj/run.sh -cp ./lib/commons-lang3-3.12.0.jar -id TME-3 -name TME-3
     pobj.motx.tme3.test.CroixContrainteTest
     pobj.motx.tme3.test.GrilleContrainteTest1
     pobj.motx.tme3.test.GrilleContrainteTest2
