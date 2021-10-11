@@ -26,7 +26,7 @@ public class GrillePotentiel {
      * si il existe des emplacements ayant un domaine potentiel vide
      */
     private boolean dead = false;
- 
+
     /**
      * Constuit la grille potentiele avec la grille, le resultat dans le
      * dictionnaire
@@ -53,12 +53,6 @@ public class GrillePotentiel {
         }
     }
 
-    public GrillePotentiel(GrillePlaces grille, Dictionnaire dicoComplet,List<Dictionnaire> motsPot) {
-        this.grille= grille;
-        this.dic = dicoComplet;
-        this.motsPot = motsPot;
-    }
-
     /**
      * verifier s'il n'y a aucun possible
      *
@@ -76,15 +70,7 @@ public class GrillePotentiel {
 
     public GrillePotentiel fixer(int m, String soluce) {
         GrillePlaces grille = this.grille.fixer(m, soluce);
-        List<Dictionnaire> newMotsPot = new ArrayList<>();
-        for (int i = 0;i<motsPot.size(); i++){
-            if(i==m){
-                newMotsPot.add(new Dictionnaire());
-                continue;
-            }
-            newMotsPot.add(motsPot.get(i));
-        }
-        return new GrillePotentiel(grille, dic,motsPot);
+        return new GrillePotentiel(grille, dic);
     }
 
     public GrillePlaces getGrille() {

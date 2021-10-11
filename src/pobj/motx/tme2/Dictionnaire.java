@@ -15,8 +15,6 @@ public class Dictionnaire {
 
     // stockage des mots
     private List<String> mots = new ArrayList<>();
-    private EnsembleLettre[] cache = null;
-    private int longest = 0;
 
     /**
      * Charger le dictionnaire a partir du ficier du chemin indique
@@ -30,23 +28,12 @@ public class Dictionnaire {
             for (String line = br.readLine(); line != null; line = br.readLine()) {
                 // Utiliser "line".
                 dic.add(line);
-                if (line.length() > dic.getLongest()) {
-                    dic.setLongest(line.length());
-                }
             }
         } catch (IOException e) {
             // Problème d’accès au fichier.
             e.printStackTrace();
         }
         return dic;
-    }
-
-    public int getLongest() {
-        return longest;
-    }
-
-    public void setLongest(int longest) {
-        this.longest = longest;
     }
 
     /**
@@ -85,8 +72,6 @@ public class Dictionnaire {
     public Dictionnaire copy() {
         Dictionnaire copy = new Dictionnaire();
         copy.mots.addAll(mots);
-        copy.cache = cache;
-        copy.longest = longest;
         return copy;
     }
 
@@ -108,10 +93,6 @@ public class Dictionnaire {
                 cpt++;
         }
         mots = cible;
-        if (cpt > 0) {
-            longest = len;
-            cache = null;
-        }
         return cpt;
     }
 
@@ -125,60 +106,27 @@ public class Dictionnaire {
     public int filtreParLettre(char c, int i) {
         List<String> cible = new ArrayList<>();
         int cpt = 0;
-        int len = 0;
-        EnsembleLettre el = charAt(i);
-        if (!el.contains(c)) {
-            cpt = mots.size();
-            len = 0;
-            cache = null;
-            mots = new ArrayList<String>();
-            return cpt;
-        }
         for (String mot : mots) {
-            if (mot.charAt(i) == c) {
+            if (mot.charAt(i) == c)
                 cible.add(mot);
-                if (mot.length() > len) {
-                    len = mot.length();
-                }
-            } else
+            else
                 cpt++;
         }
         mots = cible;
-        if (cpt > 0) {
-            longest = len;
-            cache = null;
-        }
         return cpt;
     }
 
     public int filtreParLettres(EnsembleLettre l, int i) {
         List<String> cible = new ArrayList<>();
         int cpt = 0;
-        int len = 0;
-        EnsembleLettre el = charAt(i);
-        EnsembleLettre inter = EnsembleLettre.intersection(l);
-        if (inter.size == 0) {
-            cpt = mots.size();
-            len = 0;
-            cache = null;
-            mots = new ArrayList<String>();
-            return cpt;
-        }
         for (String mot : mots) {
             if (l.contains(mot.charAt(i))) {
                 cible.add(mot);
-                if (mot.length() > len) {
-                    len = mot.length();
-                }
             } else
                 cpt++;
 
         }
         mots = cible;
-        if (cpt > 0) {
-            longest = len;
-            cache = null;
-        }
         return cpt;
     }
 
@@ -186,8 +134,7 @@ public class Dictionnaire {
         return mots;
     }
 
-    @Override
-    public String toString() {
+    @Override public String toString() {
         if (size() == 1) {
             return mots.get(0);
         } else {
@@ -195,19 +142,4 @@ public class Dictionnaire {
         }
     }
 
-    public EnsembleLettre charAt(int index) {
-        if (mots.isEmpty())
-            return new EnsembleLettre();
-        if (cache == null) {
-            cache = new EnsembleLettre[longest];
-        }
-        if (cache[index] == null) {
-            cache[index] = new EnsembleLettre();
-            for (String s : mots) {
-                cache[index].add(s.charAt(index));
-                return cache[index];
-            }
-        }
-        return cache[index];
-    }
 }
