@@ -15,18 +15,11 @@ public class CroixContrainte implements IContrainte {
     }
 
     @Override public int reduce(GrillePotentiel grille) {
-
-        EnsembleLettre l1 = new EnsembleLettre();
         Dictionnaire d1 = grille.getMotsPot().get(m1);
-        for (int i = 0; i < d1.size(); i++) {
-            l1.add(d1.get(i).charAt(c1));
-        }
+        EnsembleLettre l1 = d1.charAt(c1);
 
-        EnsembleLettre l2 = new EnsembleLettre();
         Dictionnaire d2 = grille.getMotsPot().get(m2);
-        for (int i = 0; i < d2.size(); i++) {
-            l2.add(d2.get(i).charAt(c2));
-        }
+        EnsembleLettre l2 = d2.charAt(c2);
 
         EnsembleLettre s = EnsembleLettre.intersection(l1, l2);
         int cpt = 0;
