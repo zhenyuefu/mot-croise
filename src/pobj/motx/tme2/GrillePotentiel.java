@@ -1,5 +1,7 @@
 package pobj.motx.tme2;
 
+import pobj.motx.tme1.Emplacement;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,8 +43,10 @@ public class GrillePotentiel {
         motsPot = new ArrayList<>();
         for (var e : this.grille.getPlaces()) {
             Dictionnaire d = dic.copy();
-            if (d.filtreLongueur(e.size()) == 0) {
+            d.filtreLongueur(e.size());
+            if (d.size() == 0) {
                 dead = true;
+                break;
             }
             for (int i = 0; i < e.size(); i++) {
                 if (e.getCase(i).getChar() != ' ') {
@@ -50,6 +54,26 @@ public class GrillePotentiel {
                 }
             }
             motsPot.add(d);
+        }
+    }
+
+    public GrillePotentiel(GrillePlaces grille, Dictionnaire dicoComplet, List<Dictionnaire> motsPot) {
+        this.grille = grille;
+        this.dic = dicoComplet;
+        this.motsPot = motsPot;
+        List<Emplacement> places = this.grille.getPlaces();
+        for (int i = 0; i < places.size(); i++) {
+            motsPot.get(i).filtreLongueur(places.get(i).size());
+            if (motsPot.get(i).size() == 0) {
+                dead = true;
+                break;
+            }
+            for (int j = 0; j < places.get(i).size(); j++) {
+                char c = places.get(i).getCase(j).getChar();
+                if (c != ' ') {
+                    motsPot.get(i).filtreParLettre(c, j);
+                }
+            }
         }
     }
 
@@ -61,7 +85,6 @@ public class GrillePotentiel {
      */
     public boolean isDead() {
         return dead;
-
     }
 
     public void setDead() {
@@ -70,7 +93,12 @@ public class GrillePotentiel {
 
     public GrillePotentiel fixer(int m, String soluce) {
         GrillePlaces grille = this.grille.fixer(m, soluce);
-        return new GrillePotentiel(grille, dic);
+        List<Dictionnaire> newMots = new ArrayList<>();
+        for (Dictionnaire d : motsPot) {
+            newMots.add(d.copy());
+        }
+        newMots.get(m).fixer(soluce);
+        return new GrillePotentiel(grille, dic, newMots);
     }
 
     public GrillePlaces getGrille() {

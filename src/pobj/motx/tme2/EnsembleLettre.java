@@ -34,4 +34,8 @@ public class EnsembleLettre {
     public List<Character> getListe() {
         return liste;
     }
+
+    @Override public String toString() {
+        return "{" + liste + '}';
+    }
 }

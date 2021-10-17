@@ -28,7 +28,11 @@ public class DicoVariable implements IVariable {
         return mots.toArray(new String[0]);
     }
 
+    @Override public int getContraintesNumber() {
+        return gp.getContraintesNumber(index);
+    }
+
     @Override public String toString() {
-        return "DicoVariable{" + "index=" + index + ", gp=" + gp.getMotsPot().get(index).getMots() + '}';
+        return "DicoVariable{" + "index=" + index + ", mots potentiel=" + gp.getMotsPot().get(index).getMots() + '}';
     }
 }

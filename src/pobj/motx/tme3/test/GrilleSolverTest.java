@@ -1,7 +1,6 @@
 package pobj.motx.tme3.test;
 
 import org.junit.Test;
-
 import pobj.motx.tme1.Grille;
 import pobj.motx.tme1.GrilleLoader;
 import pobj.motx.tme2.Dictionnaire;
@@ -13,23 +12,23 @@ import pobj.motx.tme3.csp.ICSP;
 
 public class GrilleSolverTest {
 
-	@Test
-	public void testHard() {
-		Dictionnaire gut = Dictionnaire.loadDictionnaire("data/frgut.txt");
-		Grille gr = GrilleLoader.loadGrille("data/easy.grl");
+    @Test public void testHard() {
+        Dictionnaire gut = Dictionnaire.loadDictionnaire("data/frgut.txt");
+        Grille gr = GrilleLoader.loadGrille("data/easy2.grl");
 
-		System.out.println(gr);
+        System.out.println(gr);
 
-		GrillePlaces grille = new GrillePlaces(gr);
-		GrilleContrainte gp = new GrilleContrainte(grille, gut);
-		
-		ICSP problem = new MotX(gp);
-		CSPSolver solver = new CSPSolver();
+        GrillePlaces grille = new GrillePlaces(gr);
+        GrilleContrainte gp = new GrilleContrainte(grille, gut);
 
-		long timestamp = System.currentTimeMillis();
-		ICSP solution = solver.solve(problem);
+        ICSP problem = new MotX(gp);
+        CSPSolver solver = new CSPSolver();
 
-		System.out.println("Solution \n" + solution + " \nCalculée en "+ (System.currentTimeMillis() - timestamp) +" ms " );
-	}
+        long timestamp = System.currentTimeMillis();
+        ICSP solution = solver.solve(problem);
+
+        System.out.println(
+            "Solution \n" + solution + " \nCalculée en " + (System.currentTimeMillis() - timestamp) + " ms ");
+    }
 
 }
